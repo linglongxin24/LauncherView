@@ -587,6 +587,9 @@ public class ClassifyView extends FrameLayout {
             public void onLongPress(MotionEvent e) {
                 View pressedView = findChildView(mSubRecyclerView, e);
                 if (pressedView == null) return;
+                for (DragListener listener : mDragListeners) {
+                    listener.onLongPress();
+                }
                 L.d("Sub recycler view on long press: x: %1$s + y: %2$s", e.getX(), e.getY());
                 int position = mSubRecyclerView.getChildAdapterPosition(pressedView);
                 int pointerId = MotionEventCompat.getPointerId(e, 0);
@@ -1632,6 +1635,7 @@ public class ClassifyView extends FrameLayout {
 
 
     public interface DragListener {
+        void onLongPress();
         /**
          * 开始拖拽
          *
