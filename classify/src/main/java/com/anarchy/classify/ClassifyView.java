@@ -765,7 +765,7 @@ public class ClassifyView extends FrameLayout {
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
-        layoutParams.gravity = Gravity.BOTTOM;
+        layoutParams.gravity = Gravity.CENTER;
         layoutParams.height = (int) (getHeight() * mSubRatio);
         layoutParams.dimAmount = 0.6f;
         layoutParams.windowAnimations = R.style.DefaultAnimation;
