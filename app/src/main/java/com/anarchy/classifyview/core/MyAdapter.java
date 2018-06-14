@@ -29,6 +29,10 @@ public class MyAdapter extends SimpleAdapter<Bean, MyAdapter.ViewHolder> {
         return this;
     }
 
+    public boolean isLongPress() {
+        return isLongPress;
+    }
+
     public MyAdapter(List<List<Bean>> mData) {
         super(mData);
     }
@@ -46,6 +50,17 @@ public class MyAdapter extends SimpleAdapter<Bean, MyAdapter.ViewHolder> {
     }
 
     private void bindData(ViewHolder holder, final int mainPosition, final int subPosition) {
+        final TextView tv_name = (TextView) holder.itemView.findViewById(R.id.tv_name);
+        if(getSubItemCount(mainPosition)==1){
+            tv_name.setText("应用"+mainPosition);
+        }else{
+            if(subPosition==-1){
+                tv_name.setText("文件夹"+mainPosition);
+            }else{
+                tv_name.setText("应用"+mainPosition+"-"+(subPosition+1));
+            }
+        }
+
         final TextView tv_del = (TextView) holder.itemView.findViewById(R.id.tv_del);
         tv_del.setOnClickListener(new View.OnClickListener() {
             @Override

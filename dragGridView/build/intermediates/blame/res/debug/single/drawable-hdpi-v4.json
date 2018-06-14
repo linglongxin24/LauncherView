@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_icon.jpg",
+        "source": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\src\\main\\res\\drawable-hdpi\\ic_icon.jpg"
+    },
+    {
+        "merged": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon4.jpg",
+        "source": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\src\\main\\res\\drawable-hdpi\\icon4.jpg"
+    },
+    {
+        "merged": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon.jpg",
+        "source": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\src\\main\\res\\drawable-hdpi\\icon.jpg"
+    }
+]

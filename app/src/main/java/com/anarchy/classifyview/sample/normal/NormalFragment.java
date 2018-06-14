@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,26 +23,28 @@ import com.anarchy.classifyview.utils.DataGenerate;
  * Author: rsshinide38@163.com
  * <p/>
  */
-public class NormalFragment extends BaseFragment{
+public class NormalFragment extends BaseFragment {
     private ClassifyView mClassifyView;
-    private final String TAG="ClassifyView";
+    private final String TAG = "ClassifyView";
+    private MyAdapter baseSimpleAdapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.normal,container,false);
+        View view = inflater.inflate(R.layout.normal, container, false);
         mClassifyView = (ClassifyView) view.findViewById(R.id.classify_view);
-        final MyAdapter baseSimpleAdapter = new MyAdapter(DataGenerate.generateBean());
+        baseSimpleAdapter = new MyAdapter(DataGenerate.generateBean());
         mClassifyView.setAdapter(baseSimpleAdapter);
         mClassifyView.addDragListener(new ClassifyView.DragListener() {
             @Override
             public void onLongPress() {
-                baseSimpleAdapter.setLongPress(true);
-                baseSimpleAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onDragStart(ViewGroup parent, View selectedView, float startX, float startY, int region) {
-                Log.d(TAG,"-----onDragStart------");
+                Log.d(TAG, "-----onDragStart------");
+                baseSimpleAdapter.setLongPress(true);
+                baseSimpleAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -52,7 +55,8 @@ public class NormalFragment extends BaseFragment{
             @Override
             public void onDragEnd(ViewGroup parent, int region) {
 
-                Log.d(TAG,"-----onDragEnd------");
+                baseSimpleAdapter.notifyDataSetChanged();
+                Log.d(TAG, "-----onDragEnd------");
             }
 
             @Override
@@ -66,6 +70,19 @@ public class NormalFragment extends BaseFragment{
             }
         });
         mClassifyView.setDebugAble(true);
+        mClassifyView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode==KeyEvent.KEYCODE_BACK){
+                    if (baseSimpleAdapter.isLongPress()) {
+                        baseSimpleAdapter.setLongPress(false);
+                        baseSimpleAdapter.notifyDataSetChanged();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
         return view;
     }
 

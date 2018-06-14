@@ -1,0 +1,7 @@
+#Wed Jun 13 10:23:59 CST 2018
+base.0=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\2\\nineoldanimatin_41b466b9963a66bf4c226a9b3b40aadd0fc8e09f
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\support-v4-19.1.0_73b9883bfda7e9a6ae205d0e99c174e73ba72aaa\\classes.dex
+base.1=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\support-v4-19.1.0_73b9883bfda7e9a6ae205d0e99c174e73ba72aaa
+file.0=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\2\\nineoldanimatin_41b466b9963a66bf4c226a9b3b40aadd0fc8e09f\\classes.dex

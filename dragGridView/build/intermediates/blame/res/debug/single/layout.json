@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\res\\merged\\debug\\layout\\drag_gridview_layout.xml",
+        "source": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\src\\main\\res\\layout\\drag_gridview_layout.xml"
+    },
+    {
+        "merged": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\res\\merged\\debug\\layout\\grid_item.xml",
+        "source": "D:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\src\\main\\res\\layout\\grid_item.xml"
+    }
+]

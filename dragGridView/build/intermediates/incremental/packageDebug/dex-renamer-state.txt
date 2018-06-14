@@ -1,0 +1,7 @@
+#Wed Jun 13 10:24:01 CST 2018
+base.0=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_e7aad5970baadbff26c2bd10673736a3bbea2fc8
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6553a440a09b52ba52f38049c7df649aca3e2a52\\classes.dex
+base.1=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_6553a440a09b52ba52f38049c7df649aca3e2a52
+file.0=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_e7aad5970baadbff26c2bd10673736a3bbea2fc8\\classes.dex
