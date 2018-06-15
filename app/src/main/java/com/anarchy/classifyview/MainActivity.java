@@ -1,29 +1,33 @@
 package com.anarchy.classifyview;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
-    public static final String EXTRA_POSITION = "com.anarchy.classifyview.MainActivity.EXTRA_POSITION";
+import com.anarchy.classify.ClassifyView;
+import com.anarchy.classifyview.core.MyAdapter;
+import com.anarchy.classifyview.utils.DataGenerate;
+
+public class MainActivity extends AppCompatActivity {
+    private ClassifyView mClassifyView;
+    private final String TAG = "ClassifyView";
+    private MyAdapter baseSimpleAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ListView sampleList = (ListView) findViewById(R.id.sample_list);
-        sampleList.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.list_name)));
-        sampleList.setOnItemClickListener(this);
+        setContentView(R.layout.ac_main);
+        mClassifyView = (ClassifyView) findViewById(R.id.classify_view);
+        baseSimpleAdapter = new MyAdapter(DataGenerate.generateBean());
+        mClassifyView.setAdapter(baseSimpleAdapter);
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(this,ContentActivity.class);
-        i.putExtra(EXTRA_POSITION,position);
-        startActivity(i);
+    public void onBackPressed() {
+        if(baseSimpleAdapter.isLongPress()){
+            baseSimpleAdapter.setLongPress(false);
+            baseSimpleAdapter.notifyDataSetChanged();
+        }else{
+            super.onBackPressed();
+        }
     }
 }

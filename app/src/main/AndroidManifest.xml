@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -17,7 +17,6 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".ContentActivity" android:configChanges="screenSize|keyboardHidden|orientation"/>
     </application>
 
 </manifest>

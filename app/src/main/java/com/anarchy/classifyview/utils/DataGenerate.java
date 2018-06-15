@@ -1,7 +1,5 @@
 package com.anarchy.classifyview.utils;
 
-import com.anarchy.classifyview.sample.normalfolder.bean.BaseBean;
-import com.anarchy.classifyview.sample.normalfolder.bean.BookBean;
 import com.anarchy.classifyview.core.Bean;
 
 import java.util.ArrayList;
@@ -31,16 +29,16 @@ public class DataGenerate {
         }
         return data;
     }
-    public static List<BaseBean> generateBaseBean(){
-        List<BaseBean> data = new ArrayList<>();
-        for(int i=0;i<6;i++){
-            BaseBean baseBean=new BaseBean();
-            List<BookBean> inner = new ArrayList<>();
-            inner.add(new BookBean());
-
-            baseBean.setBookList(inner);
-            data.add(baseBean);
-        }
-        return data;
-    }
+//    public static List<BaseBean> generateBaseBean(){
+//        List<BaseBean> data = new ArrayList<>();
+//        for(int i=0;i<6;i++){
+//            BaseBean baseBean=new BaseBean();
+//            List<BookBean> inner = new ArrayList<>();
+//            inner.add(new BookBean());
+//
+//            baseBean.setBookList(inner);
+//            data.add(baseBean);
+//        }
+//        return data;
+//    }
 }

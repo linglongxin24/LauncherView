@@ -1,2 +1,1 @@
-include ':app', ':classify'
-include ':dragGridView'
+include ':app', ':launcherrecyclerview'

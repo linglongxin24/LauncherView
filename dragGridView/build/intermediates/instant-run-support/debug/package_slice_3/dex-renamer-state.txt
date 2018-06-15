@@ -1,4 +1,0 @@
-#Wed Jun 13 10:24:00 CST 2018
-base.0=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_3
-renamed.0=classes.dex
-file.0=D\:\\Android\\AndroidStudioProjects\\Simple\\ClassifyView\\dragGridView\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_3\\classes.dex
