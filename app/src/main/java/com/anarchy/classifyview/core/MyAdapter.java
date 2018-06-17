@@ -13,9 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anarchy.classify.simple.SimpleAdapter;
+import com.anarchy.classifyview.MainActivity;
 import com.anarchy.classifyview.R;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,7 +25,7 @@ import java.util.List;
  * <p/>
  */
 public class MyAdapter extends SimpleAdapter<Bean, MyAdapter.ViewHolder> {
-    private String Tag="LauncherRecyclerView";
+    private String Tag = "LauncherRecyclerView";
     private boolean isLongPress = false;
 
     public MyAdapter setLongPress(boolean longPress) {
@@ -53,15 +53,15 @@ public class MyAdapter extends SimpleAdapter<Bean, MyAdapter.ViewHolder> {
         bindData(holder, mainPosition, subPosition);
     }
 
-    private void bindData(ViewHolder holder, final int mainPosition, final int subPosition) {
+    private void bindData(final ViewHolder holder, final int mainPosition, final int subPosition) {
         final TextView tv_name = (TextView) holder.itemView.findViewById(R.id.tv_name);
         if (getSubItemCount(mainPosition) == 1) {
-            tv_name.setText("应用" + mainPosition);
+            tv_name.setText(getSubSource(mainPosition).get(0).getName());
         } else {
             if (subPosition == -1) {
-                tv_name.setText("文件夹" + mainPosition);
+                tv_name.setText(getSubSource(mainPosition).get(0).getFolderName());
             } else {
-                tv_name.setText("应用" + mainPosition + "-" + (subPosition + 1));
+                tv_name.setText(getSubSource(mainPosition).get(subPosition).getName());
             }
         }
 
@@ -84,6 +84,16 @@ public class MyAdapter extends SimpleAdapter<Bean, MyAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(tv_del.getContext(), "信息", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getSubItemCount(mainPosition) == 1) {
+                    setLongPress(false);
+                    notifyDataSetChanged();
+                }
             }
         });
         final View view = holder.itemView.findViewById(R.id.view);
@@ -115,29 +125,47 @@ public class MyAdapter extends SimpleAdapter<Bean, MyAdapter.ViewHolder> {
     @Override
     protected void onDragAnimationEnd(ViewHolder viewHolder, int parentIndex, int index) {
         super.onDragAnimationEnd(viewHolder, parentIndex, index);
-//        notifyDataSetChanged();
     }
 
     @Override
     protected void onMove(int selectedPosition, int targetPosition) {
-//        super.onMove(selectedPosition, targetPosition);
-        Log.d(Tag,"--onMove--selectedPosition="+selectedPosition+"targetPosition="+targetPosition);
+        super.onMove(selectedPosition, targetPosition);
+        Log.d(Tag, "--onMove--selectedPosition=" + selectedPosition + "targetPosition=" + targetPosition);
     }
 
     @Override
     protected void onMerged(int selectedPosition, int targetPosition) {
         super.onMerged(selectedPosition, targetPosition);
-        Log.d(Tag,"--onMerged--selectedPosition="+selectedPosition+"targetPosition="+targetPosition);
+        List<Bean> beanList = mData.get(targetPosition);
+        for (int i = 0; i < beanList.size(); i++) {
+            Bean bean = beanList.get(i);
+            if (bean.isFolder()) {
+                break;
+            }
+            bean.setFolder(true);
+            bean.setFolderName("文件夹" + (getItemCount() + 1));
+            beanList.set(i, bean);
+        }
+        mData.set(targetPosition, beanList);
+        if (selectedPosition < targetPosition) {
+            notifyItemChanged(targetPosition - 1);
+        } else {
+            notifyItemChanged(targetPosition);
+        }
+
+        Log.d(Tag, "--onMerged--selectedPosition=" + selectedPosition + "targetPosition="
+                + targetPosition + "getSubSource(mainPosition).get(0).getFolderName()="
+                + getSubSource(targetPosition).get(0).getFolderName());
     }
 
     @Override
     protected void onSubMove(List<Bean> beans, int selectedPosition, int targetPosition) {
         super.onSubMove(beans, selectedPosition, targetPosition);
-        Log.d(Tag,"--onSubMove--selectedPosition="+selectedPosition+"targetPosition="+targetPosition);
+        Log.d(Tag, "--onSubMove--selectedPosition=" + selectedPosition + "targetPosition=" + targetPosition);
     }
 
     @Override
-    protected void onSubDialogShow(Dialog dialog, int parentPosition) {
+    protected void onSubDialogShow(Dialog dialog, final int parentPosition) {
         super.onSubDialogShow(dialog, parentPosition);
         final EditText et_folder = (EditText) dialog.findViewById(com.anarchy.classify.R.id.et_folder);
         et_folder.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +176,7 @@ public class MyAdapter extends SimpleAdapter<Bean, MyAdapter.ViewHolder> {
                 et_folder.requestFocus();
             }
         });
-        et_folder.setText("文件夹1");
+        et_folder.setText(getSubSource(parentPosition).get(0).getFolderName());
         et_folder.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -162,7 +190,7 @@ public class MyAdapter extends SimpleAdapter<Bean, MyAdapter.ViewHolder> {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                getSubSource(parentPosition).get(0).setFolderName(et_folder.getText().toString().trim());
             }
         });
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
