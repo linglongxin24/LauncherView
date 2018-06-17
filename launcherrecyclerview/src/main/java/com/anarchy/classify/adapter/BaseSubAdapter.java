@@ -7,7 +7,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 
 
-import com.anarchy.classify.ClassifyView;
+import com.anarchy.classify.LauncherView;
 import com.anarchy.classify.callback.SubRecyclerViewCallBack;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  * Version 1.0
  * <p>
  * Date: 16/6/1 15:34
- * Author: rsshinide38@163.com
+ * Author: linglongxin24@163.com
  * <p>
  */
 public abstract class BaseSubAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> implements SubRecyclerViewCallBack {
@@ -120,7 +120,7 @@ public abstract class BaseSubAdapter<VH extends RecyclerView.ViewHolder> extends
     public int getCurrentState(View selectedView, View targetView, int x, int y,
                                VelocityTracker velocityTracker, int selectedPosition,
                                int targetPosition) {
-        if(velocityTracker == null) return ClassifyView.MOVE_STATE_NONE;
+        if(velocityTracker == null) return LauncherView.MOVE_STATE_NONE;
         int left = x;
         int top = y;
         int right = left + selectedView.getWidth();
@@ -134,10 +134,10 @@ public abstract class BaseSubAdapter<VH extends RecyclerView.ViewHolder> extends
             float yVelocity = velocityTracker.getYVelocity();
             float limit = getVelocity(targetView.getContext());
             if(xVelocity < limit && yVelocity < limit){
-                return ClassifyView.MOVE_STATE_MOVE;
+                return LauncherView.MOVE_STATE_MOVE;
             }
         }
-        return ClassifyView.MOVE_STATE_NONE;
+        return LauncherView.MOVE_STATE_NONE;
     }
 
     @Override

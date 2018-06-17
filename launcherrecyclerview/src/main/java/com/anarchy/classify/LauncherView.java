@@ -21,8 +21,6 @@ import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.DragEvent;
 import android.view.GestureDetector;
@@ -34,7 +32,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Interpolator;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.anarchy.classify.adapter.BaseMainAdapter;
@@ -55,10 +52,10 @@ import java.util.Queue;
 /**
  * <p>
  * Date: 16/6/1 14:16
- * Author: rsshinide38@163.com
+ * Author: linglongxin24@163.com
  * <p>
  */
-public class ClassifyView extends FrameLayout {
+public class LauncherView extends FrameLayout {
 
     /**
      * 不做处理的状态
@@ -201,24 +198,24 @@ public class ClassifyView extends FrameLayout {
 
     private VelocityTracker mVelocityTracker;
 
-    public ClassifyView(Context context) {
+    public LauncherView(Context context) {
         super(context);
         init(context, null, 0);
     }
 
-    public ClassifyView(Context context, AttributeSet attrs) {
+    public LauncherView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0);
     }
 
-    public ClassifyView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LauncherView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
     }
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public ClassifyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LauncherView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs, defStyleAttr);
     }
@@ -230,29 +227,29 @@ public class ClassifyView extends FrameLayout {
         mMainContainer = new FrameLayout(context);
         mSubContainer = new FrameLayout(context);
         mMainContainer.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ClassifyView, defStyleAttr, R.style.DefaultStyle);
-        mSubRatio = a.getFraction(R.styleable.ClassifyView_SubRatio, 1, 1, 0.7f);
-        mMainSpanCount = a.getInt(R.styleable.ClassifyView_MainSpanCount, 3);
-        mSubSpanCount = a.getInt(R.styleable.ClassifyView_SubSpanCount, 3);
-        mAnimationDuration = a.getInt(R.styleable.ClassifyView_AnimationDuration, 200);
-        mEdgeWidth = a.getDimensionPixelSize(R.styleable.ClassifyView_EdgeWidth, 15);
-        mDragScaleX = a.getFloat(R.styleable.ClassifyView_DragScaleX, 1f);
-        mDragScaleY = a.getFloat(R.styleable.ClassifyView_DragScaleY, 1f);
-        mDragInMergeScaleX = a.getFloat(R.styleable.ClassifyView_DragInMergeScaleX, 1f);
-        mDragInMergeScaleY = a.getFloat(R.styleable.ClassifyView_DragInMergeScaleY, 1f);
-        mGravity = a.getInt(R.styleable.ClassifyView_DragScalePivotGravity, LEFT_TOP);
-        int mainPadding = a.getDimensionPixelSize(R.styleable.ClassifyView_MainPadding, 0);
-        int mainPaddingLeft = a.getDimensionPixelSize(R.styleable.ClassifyView_MainPaddingLeft, 0);
-        int mainPaddingTop = a.getDimensionPixelSize(R.styleable.ClassifyView_MainPaddingTop, 0);
-        int mainPaddingRight = a.getDimensionPixelSize(R.styleable.ClassifyView_MainPaddingRight, 0);
-        int mainPaddingBottom = a.getDimensionPixelSize(R.styleable.ClassifyView_MainPaddingBottom, 0);
-        boolean mainClipToPadding = a.getBoolean(R.styleable.ClassifyView_MainClipToPadding, true);
-        int subPadding = a.getDimensionPixelSize(R.styleable.ClassifyView_SubPadding, 0);
-        int subPaddingLeft = a.getDimensionPixelSize(R.styleable.ClassifyView_SubPaddingLeft, 0);
-        int subPaddingTop = a.getDimensionPixelSize(R.styleable.ClassifyView_SubPaddingTop, 0);
-        int subPaddingRight = a.getDimensionPixelSize(R.styleable.ClassifyView_SubPaddingRight, 0);
-        int subPaddingBottom = a.getDimensionPixelSize(R.styleable.ClassifyView_SubPaddingBottom, 0);
-        boolean subClipToPadding = a.getBoolean(R.styleable.ClassifyView_SubClipToPadding, true);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LauncherView, defStyleAttr, R.style.DefaultStyle);
+        mSubRatio = a.getFraction(R.styleable.LauncherView_SubRatio, 1, 1, 0.7f);
+        mMainSpanCount = a.getInt(R.styleable.LauncherView_MainSpanCount, 3);
+        mSubSpanCount = a.getInt(R.styleable.LauncherView_SubSpanCount, 3);
+        mAnimationDuration = a.getInt(R.styleable.LauncherView_AnimationDuration, 200);
+        mEdgeWidth = a.getDimensionPixelSize(R.styleable.LauncherView_EdgeWidth, 15);
+        mDragScaleX = a.getFloat(R.styleable.LauncherView_DragScaleX, 1f);
+        mDragScaleY = a.getFloat(R.styleable.LauncherView_DragScaleY, 1f);
+        mDragInMergeScaleX = a.getFloat(R.styleable.LauncherView_DragInMergeScaleX, 1f);
+        mDragInMergeScaleY = a.getFloat(R.styleable.LauncherView_DragInMergeScaleY, 1f);
+        mGravity = a.getInt(R.styleable.LauncherView_DragScalePivotGravity, LEFT_TOP);
+        int mainPadding = a.getDimensionPixelSize(R.styleable.LauncherView_MainPadding, 0);
+        int mainPaddingLeft = a.getDimensionPixelSize(R.styleable.LauncherView_MainPaddingLeft, 0);
+        int mainPaddingTop = a.getDimensionPixelSize(R.styleable.LauncherView_MainPaddingTop, 0);
+        int mainPaddingRight = a.getDimensionPixelSize(R.styleable.LauncherView_MainPaddingRight, 0);
+        int mainPaddingBottom = a.getDimensionPixelSize(R.styleable.LauncherView_MainPaddingBottom, 0);
+        boolean mainClipToPadding = a.getBoolean(R.styleable.LauncherView_MainClipToPadding, true);
+        int subPadding = a.getDimensionPixelSize(R.styleable.LauncherView_SubPadding, 0);
+        int subPaddingLeft = a.getDimensionPixelSize(R.styleable.LauncherView_SubPaddingLeft, 0);
+        int subPaddingTop = a.getDimensionPixelSize(R.styleable.LauncherView_SubPaddingTop, 0);
+        int subPaddingRight = a.getDimensionPixelSize(R.styleable.LauncherView_SubPaddingRight, 0);
+        int subPaddingBottom = a.getDimensionPixelSize(R.styleable.LauncherView_SubPaddingBottom, 0);
+        boolean subClipToPadding = a.getBoolean(R.styleable.LauncherView_SubClipToPadding, true);
         a.recycle();
         mMainRecyclerView = getMain(context, attrs);
         if (mainPadding != 0) {
@@ -460,7 +457,7 @@ public class ClassifyView extends FrameLayout {
 
     /**
      * @param baseSimpleAdapter
-     * @see ClassifyView#addDragListener(DragListener)
+     * @see LauncherView#addDragListener(DragListener)
      */
     public void setAdapter(BaseSimpleAdapter baseSimpleAdapter) {
         setAdapter(baseSimpleAdapter.getMainAdapter(), baseSimpleAdapter.getSubAdapter());
@@ -631,7 +628,7 @@ public class ClassifyView extends FrameLayout {
                         mState = STATE_DRAG;
                         mSubCallBack.onDragStart(mSubRecyclerView, mSelectedPosition);
                         for (DragListener listener : mDragListeners) {
-                            listener.onDragStart(ClassifyView.this, mSelected, mInitialTouchX, mInitialTouchY, IN_MAIN_REGION);
+                            listener.onDragStart(LauncherView.this, mSelected, mInitialTouchX, mInitialTouchY, IN_MAIN_REGION);
                         }
                         doStartDragWithAnimation(mSubRecyclerView, mSelected, mSelectedPosition, targetX, targetY, mSubLocation, mSubCallBack);
 
@@ -702,7 +699,7 @@ public class ClassifyView extends FrameLayout {
                         mScrollRunnable.run();
                         if (mMoveListenerEnable) {
                             for (DragListener listener : mDragListeners) {
-                                listener.onMove(ClassifyView.this, x, y, IN_SUB_REGION);
+                                listener.onMove(LauncherView.this, x, y, IN_SUB_REGION);
                             }
                         }
                         break;
@@ -717,7 +714,7 @@ public class ClassifyView extends FrameLayout {
                             doRecoverAnimation();
                             mState = STATE_SETTLE;
                             for (DragListener listener : mDragListeners) {
-                                listener.onDragRelease(ClassifyView.this, x, y, IN_SUB_REGION);
+                                listener.onDragRelease(LauncherView.this, x, y, IN_SUB_REGION);
                             }
                         }
                         if ((mRegion & IN_MAIN_REGION) != 0) {
@@ -745,7 +742,7 @@ public class ClassifyView extends FrameLayout {
                             }
                             mState = STATE_SETTLE;
                             for (DragListener listener : mDragListeners) {
-                                listener.onDragRelease(ClassifyView.this, x, y, IN_MAIN_REGION);
+                                listener.onDragRelease(LauncherView.this, x, y, IN_MAIN_REGION);
                             }
                         }
                         releaseVelocityTracker();
@@ -954,7 +951,7 @@ public class ClassifyView extends FrameLayout {
                         mState = STATE_DRAG;
                         mMainCallBack.onDragStart(mMainRecyclerView, mSelectedPosition);
                         for (DragListener listener : mDragListeners) {
-                            listener.onDragStart(ClassifyView.this, mSelected, mInitialTouchX, mInitialTouchY, IN_MAIN_REGION);
+                            listener.onDragStart(LauncherView.this, mSelected, mInitialTouchX, mInitialTouchY, IN_MAIN_REGION);
                         }
                         doStartDragWithAnimation(mMainRecyclerView, mSelected, mSelectedPosition, targetX, targetY, mMainLocation, mMainCallBack);
                     }
@@ -973,7 +970,7 @@ public class ClassifyView extends FrameLayout {
                     invalidate();
                     if (mMoveListenerEnable) {
                         for (DragListener listener : mDragListeners) {
-                            listener.onMove(ClassifyView.this, x, y, IN_MAIN_REGION);
+                            listener.onMove(LauncherView.this, x, y, IN_MAIN_REGION);
                         }
                     }
                     break;
@@ -1081,7 +1078,7 @@ public class ClassifyView extends FrameLayout {
                         } else {
                             callBack.onDragAnimationEnd(recyclerView, selectedPosition);
                             for (DragListener listener : mDragListeners) {
-                                listener.onDragStartAnimationEnd(ClassifyView.this, selected, mRegion);
+                                listener.onDragStartAnimationEnd(LauncherView.this, selected, mRegion);
                             }
                         }
                     }
@@ -1182,7 +1179,7 @@ public class ClassifyView extends FrameLayout {
         @Override
         public void onAnimationEnd(Animator animation) {
             for (DragListener listener : mDragListeners) {
-                listener.onDragEnd(ClassifyView.this, mRegion);
+                listener.onDragEnd(LauncherView.this, mRegion);
             }
             restoreToInitial();
         }
@@ -1395,7 +1392,7 @@ public class ClassifyView extends FrameLayout {
                     moveIfNecessary(mSelected);
                 }
                 removeCallbacks(mScrollRunnable);
-                ViewCompat.postOnAnimation(ClassifyView.this, this);
+                ViewCompat.postOnAnimation(LauncherView.this, this);
             } else {
                 inScrollMode = false;
             }

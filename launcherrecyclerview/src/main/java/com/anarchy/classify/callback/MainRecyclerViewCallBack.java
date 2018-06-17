@@ -11,7 +11,7 @@ import java.util.List;
  * Version 1.0
  * <p/>
  * Date: 16/6/1 15:10
- * Author: rsshinide38@163.com
+ * Author: linglongxin24@163.com
  * <p/>
  */
 public interface MainRecyclerViewCallBack<Sub extends SubRecyclerViewCallBack> extends BaseCallBack{

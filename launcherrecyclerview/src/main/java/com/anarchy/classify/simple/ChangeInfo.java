@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 
 /**
  * User:  Anarchy
- * Email:  rsshinide38@163.com
+ * Email:  linglongxin24@163.com
  * CreateTime: 六月/09/2016  15:54.
  * Description:
  * 用于告知如何将当前拖拽的view移动和缩放到目标位置

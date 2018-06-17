@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ClassifyView">
+    <declare-styleable name="LauncherView">
         <attr name="SubRatio" format="fraction"/>
         <attr name="MainSpanCount" format="integer"/>
         <attr name="SubSpanCount" format="integer"/>

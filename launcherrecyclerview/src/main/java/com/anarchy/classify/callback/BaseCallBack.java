@@ -5,13 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.VelocityTracker;
 import android.view.View;
 
-import com.anarchy.classify.ClassifyView;
+import com.anarchy.classify.LauncherView;
 
 /**
  * Version 1.0
  * <p>
  * Date: 16/6/14 17:12
- * Author: rsshinide38@163.com
+ * Author: linglongxin24@163.com
  * <p>
  */
 public interface BaseCallBack {
@@ -69,7 +69,7 @@ public interface BaseCallBack {
      * @param y
      * @return
      */
-    @ClassifyView.MoveState
+    @LauncherView.MoveState
     int getCurrentState(View selectedView, View targetView, int x, int y, VelocityTracker velocityTracker, int selectedPosition, int targetPosition);
 
     /**

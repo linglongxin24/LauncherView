@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Date: 16/6/8 14:12
- * Author: rsshinide38@163.com
+ * Author: linglongxin24@163.com
  */
 public class ClassifyItemAnimator extends SimpleItemAnimator {
     private static final boolean DEBUG = false;

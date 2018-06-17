@@ -2,11 +2,8 @@ package com.anarchy.classifyview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.ArrayMap;
-import android.view.View;
-import android.widget.Toast;
 
-import com.anarchy.classify.ClassifyView;
+import com.anarchy.classify.LauncherView;
 import com.anarchy.classifyview.core.MyAdapter;
 import com.anarchy.classifyview.utils.DataGenerate;
 
@@ -16,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private ClassifyView mClassifyView;
+    private LauncherView mLauncherView;
     private final String TAG = "ClassifyView";
     private MyAdapter baseSimpleAdapter;
 
@@ -24,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_main);
-        mClassifyView = (ClassifyView) findViewById(R.id.classify_view);
+        mLauncherView = (LauncherView) findViewById(R.id.classify_view);
 
         List<Map<String, Object>> dataList = initData();
         baseSimpleAdapter = new MyAdapter(DataGenerate.generateBean());
-        mClassifyView.setAdapter(baseSimpleAdapter);
+        mLauncherView.setAdapter(baseSimpleAdapter);
     }
 
     private List<Map<String, Object>> initData() {

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.anarchy.classify.ClassifyView
+    <com.anarchy.classify.LauncherView
         android:id="@+id/classify_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.anarchy.classify.ClassifyView>
+    </com.anarchy.classify.LauncherView>
 
 </RelativeLayout>

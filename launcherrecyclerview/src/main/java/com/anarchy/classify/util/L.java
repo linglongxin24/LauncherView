@@ -4,7 +4,7 @@ import android.util.Log;
 
 /**
  * Date: 16/6/1 16:06
- * Author: rsshinide38@163.com
+ * Author: linglongxin24@163.com
  */
 public class L {
     private static final String TAG = "ClassifyView";
