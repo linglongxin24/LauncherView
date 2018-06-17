@@ -1,1 +1,1 @@
-include ':app', ':launcherrecyclerview'
+include ':app', ':launcherview'

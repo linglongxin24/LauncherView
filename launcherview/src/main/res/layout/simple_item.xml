@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<cn.bluemobi.dylan.simple.widget.InsertAbleGridView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <cn.bluemobi.dylan.LauncherView
-        android:id="@+id/launcher_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </cn.bluemobi.dylan.LauncherView>
-
-</RelativeLayout>
+</cn.bluemobi.dylan.simple.widget.InsertAbleGridView>

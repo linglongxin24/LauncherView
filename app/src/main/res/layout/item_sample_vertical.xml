@@ -5,12 +5,12 @@
     android:orientation="vertical"
     android:padding="5dp">
 
-    <com.anarchy.classify.simple.widget.InsertAbleGridView
+    <cn.bluemobi.dylan.simple.widget.InsertAbleGridView
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="wrap_content">
 
-    </com.anarchy.classify.simple.widget.InsertAbleGridView>
+    </cn.bluemobi.dylan.simple.widget.InsertAbleGridView>
 
     <TextView
         android:id="@+id/tv_name"
